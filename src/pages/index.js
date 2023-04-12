@@ -11,8 +11,8 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.svg" />
       </Head>
-      <main className={styles.appWrap}>
-        <Image src="/images/welcome/ellipse.svg" width={100} height={100} alt="CiaoChow" className={styles.backgrounImage} />
+      <main className={`${styles.homeBackground} appWrap`}>
+        <Image src="/images/welcome/ellipse.svg" width={100} height={100} alt="CiaoChow" className='backgrounImage' />
         <Image src="/images/welcome/logo.svg" width={100} height={100} alt="CiaoChow logo" className={styles.logo} />
         <Image src="/images/welcome/charactors.svg" width={100} height={100} alt="CiaoChow charactors" className={styles.charactors} />
         <p className={styles.content}> 

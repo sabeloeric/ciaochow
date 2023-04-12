@@ -1,20 +1,5 @@
-.appWrap {
+.homeBackground {
   background-color: #4CAD73;
-  height: 812px;
-  width: 440px;
-  border-radius: 30px;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  align-items: center;
-}
-
-.backgrounImage {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: -250px;
-  z-index: 1;
 }
 
 .logo {
