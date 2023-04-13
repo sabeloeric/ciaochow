@@ -2,7 +2,7 @@ import Head from 'next/head';
 import styles from '@/styles/Login.module.css';
 import Image from 'next/image';
 import { useForm } from 'react-hook-form';
-import Link from 'next/link'
+import Link from 'next/link';
 
 export default function Login() {
   const {
@@ -12,9 +12,39 @@ export default function Login() {
     formState: { errors },
   } = useForm();
 
-  console.log({ errors });
+  const fetchLoginData = (data) => {
+    fetch('https://ciaochow.plusnarrative.biz/api/auth/local', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        identifier: data.email,
+        password: data.password,
+      }),
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data)
+        if (data?.error) {
+          alert(data.error.message)
+        }
+        if(data?.jwt) {
+          localStorage.setItem('token', data.jwt);
+          window.location.href = '/dashboard';
+          alert('login success')
+        }
+      }).catch((error) => {
+        console.log(error);
+      });
+  };
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    fetchLoginData(data);
+    console.log(data)
+  };
 
   return (
     <>
@@ -53,10 +83,18 @@ export default function Login() {
           <input
             className={styles.emailInput}
             placeholder='yourmail@mail.com'
-            {...register('email', { required: true })}
+            {...register('email', {
+              required: 'Email is required',
+              pattern: {
+                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                message: 'Invalid email address',
+              },
+            })}
           />
           {errors.email && (
-            <span className={styles.error}>This field is required</span>
+            <span className={`error ${styles.emailError}`}>
+              {errors.email.message}
+            </span>
           )}
           <label className={styles.passwordLabel} htmlFor='password'>
             password
@@ -65,17 +103,21 @@ export default function Login() {
             className={styles.passwordInput}
             placeholder='your password'
             type='password'
-            {...register('password', { required: true })}
+            {...register('password', { required: 'Password is required' })}
           />
-          <Link className={styles.forgotPassword} href='/register'>Forgot password?</Link>
+          <Link className={styles.forgotPassword} href='/register'>
+            Forgot password?
+          </Link>
           {errors.password && (
-            <span className={styles.error}>This field is required</span>
+            <span className={`error ${styles.passwordError}`}>
+              {errors.password.message}
+            </span>
           )}
           <span className={styles.registerLink}>Dont have an account? </span>
           <Link className={styles.registerLinkText} href='/register'>
             Register
           </Link>
-          <input className={styles.loginButton} type='submit' value='Login'/>
+          <input className={styles.loginButton} type='submit' value='Login' />
         </form>
       </main>
     </>

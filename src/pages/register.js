@@ -29,7 +29,7 @@ export default function Register() {
         }
         if(data?.jwt) {
           localStorage.setItem('token', data.jwt);
-          window.location.href = '/login';
+          window.location.href = '/dashboard';
           alert('user created')
         }
       }).catch((error) => {
@@ -96,7 +96,7 @@ export default function Register() {
             className={`${styles.emailInput}`}
             placeholder='yourmail@mail.com'
             {...register('email', {
-              required: true,
+              required: 'Email is required',
               pattern: {
                 value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
                 message: 'Invalid email address',
