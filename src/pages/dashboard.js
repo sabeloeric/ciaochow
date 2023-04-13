@@ -1,8 +1,60 @@
+import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import styles from '@/styles/Dashboard.module.css';
 import Image from 'next/image';
 
 export default function Dashboard() {
+  const [meals, setMeals] = useState([]);
+  const [currentMeal, setCurrentMeal] = useState({});
+
+  const fetchMealInfoData = () => {
+    const jwtToken = localStorage.getItem('token');
+    fetch('https://ciaochow.plusnarrative.biz/api/chows?populate=*', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${jwtToken}`,
+      },
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+        if (data?.error) {
+          alert(data.error.message);
+        }
+        if (data?.meta?.pagination?.total) {
+          setMeals(data.data);
+          setCurrentMeal(data.data[0]);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  useEffect(() => {
+    fetchMealInfoData();
+  }, []);
+
+  const setRandomMeal = () => {
+    let randomMeal = meals[Math.floor(Math.random() * meals.length)];
+
+    // Check if the randomMeal is the same as the currentMeal
+    while (randomMeal === currentMeal) {
+      randomMeal = meals[Math.floor(Math.random() * meals.length)];
+    }
+
+    setCurrentMeal(randomMeal);
+  };
+
+  if (!currentMeal || meals.length == 0) return <div>Loading...</div>;
+
+  const imageUrl =
+    'https://ciaochow.plusnarrative.biz' +
+    currentMeal?.attributes?.Image?.data[0]?.attributes?.url;
+
   return (
     <>
       <Head>
@@ -13,7 +65,7 @@ export default function Dashboard() {
       </Head>
       <main className={`${styles.dashboardBackground} appWrap`}>
         <Image
-          src='/images/dashboard/burger.png'
+          src={imageUrl}
           width={100}
           height={100}
           alt='CiaoChow Meal'
@@ -21,7 +73,9 @@ export default function Dashboard() {
         />
         <div className={styles.mealInfo}>
           <div className={styles.mealHeader}>
-            <h1 className={styles.mealTitle}>Hamburger</h1>
+            <h1 className={styles.mealTitle}>
+              {currentMeal?.attributes?.Title}
+            </h1>
             <Image
               src='/images/dashboard/like.svg'
               width={100}
@@ -39,19 +93,11 @@ export default function Dashboard() {
             <button className={styles.mealFactsButton}>Nutrition facts</button>
           </div>
           <div className={styles.mealDescription}>
-            A hamburger (or burger for short) is a food, which in American
-            English is considered a sandwich consisting of one or more cooked
-            patties—usually ground meat, typically beef—placed inside a sliced
-            bread roll or bun. The patty may be pan fried, grilled, smoked or
-            flame broiled. Hamburgers are often served with cheese, lettuce,
-            tomato, onion, pickles, bacon, or chilis; condiments such as
-            ketchup, mustard, mayonnaise, relish, or a &quot;special sauce&quot;, often a
-            variation of Thousand Island dressing; and are frequently placed on
-            sesame seed buns.
+            {currentMeal?.attributes?.Description}
           </div>
           <div className={styles.nextButtonContainer}>
-            <button className={styles.nextButton}>
-                Nah! Find something else.
+            <button className={styles.nextButton} onClick={setRandomMeal}>
+              Nah! Find something else.
             </button>
           </div>
         </div>
