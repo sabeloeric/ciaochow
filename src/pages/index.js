@@ -3,6 +3,11 @@ import styles from '@/styles/Home.module.css'
 import Image from 'next/image'
 
 export default function Home() {
+
+  const handleGetStarted = () => {
+    window.location.href = '/register';
+  };
+
   return (
     <>
       <Head>
@@ -18,7 +23,7 @@ export default function Home() {
         <p className={styles.content}> 
           Hungry? <b>CiaoChow</b> helps you find something to eat. 
         </p>
-        <button className={styles.button}>
+        <button className={styles.button} onClick={handleGetStarted}>
           Get Started
         </button>
         <Image src="/images/welcome/dots.svg" width={100} height={100} alt="CiaoChow navigation dots" className={styles.navigationDots} />

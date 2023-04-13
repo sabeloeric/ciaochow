@@ -174,3 +174,27 @@
     color: #0EB177;
     display: inline;
 }
+
+.emailError {
+    position: absolute;
+    height: 15px;
+    left: 64px;
+    top: 496px;
+    z-index: 2;
+}
+
+.usernameError {
+    position: absolute;
+    height: 20px;
+    left: 97px;
+    top: 416px;
+    z-index: 2;
+}
+
+.passwordError {
+    position: absolute;
+    height: 20px;
+    left: 97px;
+    top: 578px;
+    z-index: 2;
+}

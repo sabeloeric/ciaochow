@@ -42,4 +42,10 @@ body {
 .error {
   color: red;
   font-size: 12px;
+  font-family: 'Inter';
+}
+
+.inputError {
+  border: 1px solid red;
+  font-size: 12px;
 }
