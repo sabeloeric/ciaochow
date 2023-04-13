@@ -1,0 +1,163 @@
+.loginBackground {
+    background-color: white;
+}
+
+.loginTitle {
+    position: absolute;
+    width: 143px;
+    height: 41px;
+    left: 20px;
+    top: 278px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 34px;
+    line-height: 41px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.374px;
+    color: #FFFFFF;
+    z-index: 2;
+}
+
+.charactor {
+    position: absolute;
+    width: 229px;
+    height: 316.3px;
+    left: 221px;
+    top: 103px;
+    z-index: 2;
+}
+
+.emailLabel {
+    position: absolute;
+    width: 36px;
+    height: 17px;
+    left: 20px;
+    top: 413px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #333333;
+}
+
+.emailInput {
+    position: absolute;
+    width: 395px;
+    height: 46px;
+    left: 20px;
+    top: 437px;
+    outline: none;
+    border: none;
+    z-index: 2;
+    padding: 13px 10px;
+    background: #F2F2F2;
+    border-radius: 10px;
+}
+
+
+.passwordLabel {
+    position: absolute;
+    width: 66px;
+    height: 17px;
+    left: 20px;
+    top: 501px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #333333;
+}
+
+.passwordInput {
+    position: absolute;
+    width: 395px;
+    height: 46px;
+    left: 20px;
+    top: 525px;
+    outline: none;
+    border: none;
+    z-index: 2;
+    padding: 13px 10px;
+    background: #F2F2F2;
+    border-radius: 10px;
+}
+
+.forgotPassword {
+    position: absolute;
+    height: 18px;
+    left: 325px;
+    top: 577px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 18px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #0EB177;
+    z-index: 2;
+    text-decoration: none;
+}
+
+.loginButton {
+    position: absolute;
+    width: 395px;
+    height: 54px;
+    left: 20px;
+    top: 612px;
+    background: #4CAD73;
+    box-shadow: 0px 3px 5px 2px rgba(0, 0, 0, 0.07);
+    border-radius: 10px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 22px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    color: #FFFFFF;
+    z-index: 2;
+}
+
+.registerLink {
+    position: absolute;
+    width: 239px;
+    height: 18px;
+    left: 59px;
+    top: 689px;
+    z-index: 2;
+    text-align: center;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    display: inline;
+    color: #0EB177;
+
+}
+
+.registerLinkText {
+    position: absolute;
+    width: 129px;
+    height: 18px;
+    left: 264px;
+    top: 689px;
+    z-index: 2;
+    font-size: 14px;
+    font-weight: bold;
+    color: #0EB177;
+    display: inline;
+}
