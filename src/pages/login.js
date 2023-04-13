@@ -27,7 +27,6 @@ export default function Login() {
         return response.json();
       })
       .then((data) => {
-        console.log(data)
         if (data?.error) {
           alert(data.error.message)
         }
@@ -37,13 +36,12 @@ export default function Login() {
           alert('login success')
         }
       }).catch((error) => {
-        console.log(error);
+        alert('Something went wrong. Please try again later.');
       });
   };
 
   const onSubmit = (data) => {
     fetchLoginData(data);
-    console.log(data)
   };
 
   return (

@@ -23,7 +23,6 @@ export default function Register() {
         return response.json();
       })
       .then((data) => {
-        console.log({ data })
         if (data?.error) {
           alert(data.error.message)
         }
@@ -33,13 +32,12 @@ export default function Register() {
           alert('user created')
         }
       }).catch((error) => {
-        console.log(error);
+        alert('Something went wrong. Please try again later.');
       });
   };
 
   const onSubmit = (data) => {
     fetchUserData(data);
-    console.log(data);
   };
 
   return (

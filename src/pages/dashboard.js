@@ -20,7 +20,6 @@ export default function Dashboard() {
         return response.json();
       })
       .then((data) => {
-        console.log(data);
         if (data?.error) {
           alert(data.error.message);
         }
@@ -30,7 +29,7 @@ export default function Dashboard() {
         }
       })
       .catch((error) => {
-        console.log(error);
+        alert('Something went wrong. Please try again later.');
       });
   };
 
